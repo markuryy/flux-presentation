@@ -1,4 +1,5 @@
 "use client"
+
 import * as React from "react"
 import { useInView } from "react-intersection-observer"
 
@@ -8,7 +9,7 @@ import classNames from "utils/classNames"
 
 interface Props {
   title: string
-  subtitle?: string
+  subtitle?: string[]
   className?: string
 }
 
@@ -30,26 +31,31 @@ const About: React.FC<Props> = ({ title, subtitle, className }) => {
   }
 
   return (
-    <div ref={ref} className={classNames("", className)}>
+    <div ref={ref} className={classNames(className ?? "")}>
       <motion.h1
         initial="hidden"
         animate={controls}
         variants={variants}
         transition={{ delay: 0, duration: 0.4, type: "spring" }}
-        className="text-5xl font-bold leading-normal text-gray-900"
+        className="mb-6 text-5xl font-bold leading-normal text-gray-900"
       >
         {title}
       </motion.h1>
-      {subtitle !== undefined && (
-        <motion.p
+      {subtitle !== undefined && subtitle.length > 0 && (
+        <motion.ul
           initial="hidden"
           animate={controls}
           variants={variants}
           transition={{ delay: 0.1, duration: 0.4, type: "spring" }}
-          className="mt-4 text-3xl leading-normal text-gray-500"
+          className="mt-4 space-y-2 text-2xl leading-normal text-gray-500"
         >
-          {subtitle}
-        </motion.p>
+          {subtitle.map((item, index) => (
+            <li key={index} className="flex items-start">
+              <span className="mr-2">•</span>
+              <span>{item.trim()}</span>
+            </li>
+          ))}
+        </motion.ul>
       )}
     </div>
   )

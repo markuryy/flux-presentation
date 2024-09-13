@@ -46,15 +46,7 @@ const End: React.FC<Props> = ({ username = "nirnejak", className }) => {
           variants={variants}
           transition={{ delay: 0.1, duration: 0.4, type: "spring" }}
         >
-          <span className="text-gray-900">{username}</span>.com
-        </motion.p>
-        <motion.p
-          initial="hidden"
-          animate={controls}
-          variants={variants}
-          transition={{ delay: 0.15, duration: 0.4, type: "spring" }}
-        >
-          twitter.com/<span className="text-gray-900">{username}</span>
+          <span className="text-gray-900">markury</span>.dev
         </motion.p>
         <motion.p
           initial="hidden"
@@ -70,7 +62,7 @@ const End: React.FC<Props> = ({ username = "nirnejak", className }) => {
           variants={variants}
           transition={{ delay: 0.25, duration: 0.4, type: "spring" }}
         >
-          dribbble.com/<span className="text-gray-900">{username}</span>
+          discord/<span className="text-gray-900">markury</span>
         </motion.p>
       </div>
     </div>
