@@ -75,12 +75,13 @@ const ImageSlide: React.FC<Props> = ({
         transition={{ delay: 0.2, duration: 0.4, type: "spring" }}
         className="w-1/2"
       >
-        <div className="relative h-[400px] w-full">
+        <div className="relative w-full h-[400px]">
           <Image
             src={image}
             alt="Slide image"
-            layout="fill"
-            objectFit="contain"
+            fill
+            className="rounded-lg object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
         {caption !== undefined && caption.length > 0 && (
