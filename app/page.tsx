@@ -38,17 +38,39 @@ const slides: React.ReactNode[] = [
     key="what-is-flux"
     title="What is Flux?"
     subtitle={[
-      "A family of advanced text-to-image models",
+      "Advanced text-to-image model family",
       "Developed by Black Forest Labs",
-      "Released just over a month ago",
-      "Builds upon and improves previous models like Stable Diffusion",
+      "Released recently (about a month ago)",
+      "Builds upon previous models like Stable Diffusion",
+    ]}
+    className="w-[680px]"
+  />,
+  <About
+    key="flux-innovations"
+    title="Flux Innovations"
+    subtitle={[
+      "Significantly larger model size",
+      "Guidance distillation for faster processing",
+      "Flow matching for improved image generation",
     ]}
     className="w-[680px]"
   />,
   <QuoteBlock
     key="flux-quote"
-    quote="Diffusion models create data from noise by inverting the forward paths of data towards noise and have emerged as a powerful generative modeling technique for high-dimensional, perceptual data such as images and videos. Rectified flow is a recent generative model formulation that connects data and noise in a straight line."
+    quote="Diffusion models create data from noise by inverting the forward paths of data towards noise and have emerged as a powerful generative modeling technique for high-dimensional, perceptual data such as images and videos."
     author="Patrick Esser et al, Scaling Rectified Flow Transformers for High-Resolution Image Synthesis"
+    className="w-[680px]"
+  />,
+  <ImageSlide
+    key="denoising-gif"
+    title="From Noise to Image"
+    subtitle={[
+      "Start with random noise",
+      "Gradually refine into coherent image",
+      "Guided by text prompt and model knowledge",
+    ]}
+    image="/images/Denoise.gif"
+    caption='Prompt: text that says "Diffusion!" in front of an abstract neural network 3d render with lit up neurons'
     className="w-[680px]"
   />,
   <Cover
@@ -63,7 +85,7 @@ const slides: React.ReactNode[] = [
     subtitle={[
       "Compressed representation of data",
       "Captures essential features efficiently",
-      "Allows for more effective processing of complex information",
+      "Allows for more effective processing",
     ]}
     className="w-[680px]"
   />,
@@ -71,9 +93,9 @@ const slides: React.ReactNode[] = [
     key="transformers"
     title="Transformer Architecture"
     subtitle={[
-      "Neural networks that handle sequential data",
-      "Use self-attention mechanisms for context understanding",
-      "Crucial for generating coherent and relevant images from text",
+      "Neural networks for sequential data",
+      "Self-attention for context understanding",
+      "Crucial for coherent image generation",
     ]}
     className="w-[680px]"
   />,
@@ -88,18 +110,8 @@ const slides: React.ReactNode[] = [
     title="Initial Attempts with LoRA"
     subtitle={[
       "Low-Rank Adaptation technique",
-      "Faced limitations in performance gains",
-      "Risk of model degradation during finetuning",
-    ]}
-    className="w-[680px]"
-  />,
-  <About
-    key="collaboration"
-    title="Collaboration and Discovery"
-    subtitle={[
-      "Sought expertise from the AI community",
-      "Explored alternative finetuning methods",
-      "Led to the discovery of advanced techniques",
+      "Limited performance gains",
+      "Risk of model degradation",
     ]}
     className="w-[680px]"
   />,
@@ -107,9 +119,9 @@ const slides: React.ReactNode[] = [
     key="advanced-finetuning"
     title="LyCORIS and LoKr: Advanced Finetuning"
     subtitle={[
-      "LyCORIS: Extends LoRA beyond conventional methods",
-      "LoKr: Uses Kronecker product for richer data representation",
-      "Preserves model integrity while achieving higher quality",
+      "LyCORIS: Extends LoRA capabilities",
+      "LoKr: Uses Kronecker product for richer data",
+      "Improved quality while preserving model integrity",
     ]}
     className="w-[680px]"
   />,
@@ -140,7 +152,7 @@ const slides: React.ReactNode[] = [
       "Variety of styles and settings",
     ]}
     image="/images/MH_Cats.png"
-    caption="Demonstration of LoKr's ability to differentiate subjects and still generalize across styles"
+    caption="Demonstration of LoKr's ability to differentiate subjects and generalize across styles"
     className="w-[680px]"
   />,
   <ImageSlide
@@ -149,7 +161,7 @@ const slides: React.ReactNode[] = [
     subtitle={[
       "Photorealistic renderings",
       "Cartoon and stylized versions",
-      "Highlights model's adaptability across styles",
+      "Highlights model's adaptability",
     ]}
     image="/images/Albert_TED.png"
     caption='Prompt: a photo of Albert the cat wearing a headset with a microphone on stage giving a TED talk. He is captured mid-speech. The TEDx logo is visible in the background with the text "Catnip Optimization Algorithms in the Digital Age" on the presentation.'
@@ -175,10 +187,9 @@ const slides: React.ReactNode[] = [
     key="ethical-considerations"
     title="Ethical Considerations"
     subtitle={[
-      "Risks of misuse: deepfakes, non-consensual imagery",
-      "Importance of data privacy and consent",
-      "Adherence to laws and regulations",
-      "Implementing safeguards like content filtering",
+      "Risks of misuse (e.g., deepfakes)",
+      "Data privacy and consent",
+      "Importance of responsible development",
     ]}
     className="w-[680px]"
   />,
@@ -186,10 +197,10 @@ const slides: React.ReactNode[] = [
     key="conclusion"
     title="Embracing the Future of AI"
     subtitle={[
-      "Flux represents significant advancement in AI imaging",
+      "Flux: significant advancement in AI imaging",
       "Innovative finetuning enhances capabilities",
-      "Balancing innovation with ethical responsibility",
-      "Encouraging ongoing dialogue and collaboration",
+      "Balancing innovation with responsibility",
+      "Encouraging ongoing dialogue",
     ]}
     className="w-[680px]"
   />,

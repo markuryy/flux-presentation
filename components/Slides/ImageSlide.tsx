@@ -75,7 +75,7 @@ const ImageSlide: React.FC<Props> = ({
         transition={{ delay: 0.2, duration: 0.4, type: "spring" }}
         className="w-1/2"
       >
-        <div className="relative w-full h-[400px]">
+        <div className="relative h-[400px] w-full">
           <Image
             src={image}
             alt="Slide image"
