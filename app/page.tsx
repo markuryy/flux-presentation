@@ -119,8 +119,9 @@ const slides: React.ReactNode[] = [
     key="advanced-finetuning"
     title="LyCORIS and LoKr: Advanced Finetuning"
     subtitle={[
-      "LyCORIS: Extends LoRA capabilities",
-      "LoKr: Uses Kronecker product for richer data",
+      "LyCORIS: LoRA beyond Conventional methods",
+      "LoKr: Uses Kronecker product for matrix approximation",
+      "Efficient: Smallest file sizes, wide parameter range",
       "Improved quality while preserving model integrity",
     ]}
     className="w-[680px]"
@@ -135,9 +136,9 @@ const slides: React.ReactNode[] = [
     key="self-portraits"
     title="Self-Portraits"
     subtitle={[
-      "Photorealistic versions",
-      "Stylized artistic renditions",
-      "Demonstrates model's versatility",
+      "Photorealistic renderings",
+      "A poorly generalized LoRA will merely reproduce training data",
+      "Model has not forgotten how to render text",
     ]}
     image="/images/M_Cool_Guy.png"
     caption='Prompt: Mark standing in an abstract dreamscape wearing a hoodie that says "cool guy" with his arms crossed'
@@ -148,11 +149,11 @@ const slides: React.ReactNode[] = [
     title="Friend's Portraits: Hannah"
     subtitle={[
       "Images created with consent",
-      "Showcases personalization capabilities",
-      "Variety of styles and settings",
+      "Consistency across multiple subjects and styles",
+      "Mitigated token bleed",
     ]}
     image="/images/MH_Cats.png"
-    caption="Demonstration of LoKr's ability to differentiate subjects and generalize across styles"
+    caption="Prompt: a cartoon of two friends, on the left, Mark is sitting with Albert the cat on his lap, and Hannah is on the right with a black cat wearing a little bowtie on her lap, they are both wearing glasses. aesthetic under the moonlight, hibiscus flowers in the foreground"
     className="w-[680px]"
   />,
   <ImageSlide
@@ -160,8 +161,9 @@ const slides: React.ReactNode[] = [
     title="Cat Images"
     subtitle={[
       "Photorealistic renderings",
-      "Cartoon and stylized versions",
-      "Highlights model's adaptability",
+      "Despite the quality, the model is visibly overfit",
+      "Struggles to infer interactions not present in training data",
+      "Inconsistent data leads to inconsistent results",
     ]}
     image="/images/Albert_TED.png"
     caption='Prompt: a photo of Albert the cat wearing a headset with a microphone on stage giving a TED talk. He is captured mid-speech. The TEDx logo is visible in the background with the text "Catnip Optimization Algorithms in the Digital Age" on the presentation.'
