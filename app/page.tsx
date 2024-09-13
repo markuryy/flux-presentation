@@ -8,6 +8,7 @@ import Cover from "components/Slides/Cover"
 import End from "components/Slides/End"
 import ImageSlide from "components/Slides/ImageSlide"
 import QuoteBlock from "components/Slides/QuoteBlock"
+import Sources from "components/Slides/Sources"
 import generateMetadata from "utils/seo"
 
 export const metadata: Metadata = generateMetadata({
@@ -40,7 +41,7 @@ const slides: React.ReactNode[] = [
     subtitle={[
       "Advanced text-to-image model family",
       "Developed by Black Forest Labs",
-      "Released recently (about a month ago)",
+      "Released recently (August 2024)",
       "Builds upon previous models like Stable Diffusion",
     ]}
     className="w-[680px]"
@@ -214,6 +215,17 @@ const slides: React.ReactNode[] = [
       "Innovative finetuning enhances capabilities",
       "Balancing innovation with responsibility",
       "Encouraging ongoing dialogue",
+    ]}
+    className="w-[680px]"
+  />,
+  <Sources
+    key="sources"
+    sources={[
+      "https://blackforestlabs.ai/announcing-black-forest-labs/",
+      "https://openreview.net/forum?id=wfzXa8e783",
+      "https://arxiv.org/abs/2403.03206",
+      "https://github.com/bghira/SimpleTuner",
+      "https://github.com/nirnejak/react-presentation/",
     ]}
     className="w-[680px]"
   />,
