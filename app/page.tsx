@@ -152,7 +152,7 @@ const slides: React.ReactNode[] = [
       "Highlights model's adaptability across styles",
     ]}
     image="/images/Albert_TED.png"
-    caption="Prompt: a photo of Albert the cat wearing a headset with a microphone on stage giving a TED talk. He is captured mid-speech. The TEDx logo is visible in the background with the text &quot;Catnip Optimization Algorithms in the Digital Age&quot; on the presentation."
+    caption='Prompt: a photo of Albert the cat wearing a headset with a microphone on stage giving a TED talk. He is captured mid-speech. The TEDx logo is visible in the background with the text "Catnip Optimization Algorithms in the Digital Age" on the presentation.'
     className="w-[680px]"
   />,
   <Cover
