@@ -9,6 +9,8 @@ import End from "components/Slides/End"
 import ImageSlide from "components/Slides/ImageSlide"
 import QuoteBlock from "components/Slides/QuoteBlock"
 import Sources from "components/Slides/Sources"
+import ComponentSlide from "components/Slides/ComponentSlide"
+import VAEVisualization from "components/Slides/VAEVisualization"
 import generateMetadata from "utils/seo"
 
 export const metadata: Metadata = generateMetadata({
@@ -22,17 +24,6 @@ const slides: React.ReactNode[] = [
     key="cover"
     title="Recent Trends in AI"
     subtitle="Introduction to Flux"
-    className="w-[680px]"
-  />,
-  <About
-    key="introduction"
-    title="Today's Journey"
-    subtitle={[
-      "Understanding Flux and its innovations",
-      "Exploring finetuning techniques",
-      "Showcasing results and applications",
-      "Discussing ethical considerations",
-    ]}
     className="w-[680px]"
   />,
   <About
@@ -51,8 +42,10 @@ const slides: React.ReactNode[] = [
     title="Flux Innovations"
     subtitle={[
       "Significantly larger model size",
-      "Guidance distillation for faster processing",
-      "Flow matching for improved image generation",
+      "Improved natural language understanding",
+      "Text rendering within images",
+      "12 channel VAE (vs. 4 channel VAE like SDXL)",
+      "Multimodal transformer (MMDiT)"
     ]}
     className="w-[680px]"
   />,
@@ -74,30 +67,16 @@ const slides: React.ReactNode[] = [
     caption='Prompt: text that says "Diffusion!" in front of an abstract neural network 3d render with lit up neurons'
     className="w-[680px]"
   />,
-  <Cover
-    key="technical-breakdown"
-    title="Technical Breakdown"
-    subtitle="Understanding the Core of Flux"
-    className="w-[680px]"
-  />,
-  <About
+  <ComponentSlide
     key="latent-space"
     title="Latent Space in Flux"
     subtitle={[
       "Compressed representation of data",
       "Captures essential features efficiently",
       "Allows for more effective processing",
+      "VAE translates between latent and image space",
     ]}
-    className="w-[680px]"
-  />,
-  <About
-    key="transformers"
-    title="Transformer Architecture"
-    subtitle={[
-      "Neural networks for sequential data",
-      "Self-attention for context understanding",
-      "Crucial for coherent image generation",
-    ]}
+    component={<VAEVisualization width={240} />}
     className="w-[680px]"
   />,
   <About
@@ -204,17 +183,6 @@ const slides: React.ReactNode[] = [
       "Risks of misuse (e.g., deepfakes)",
       "Data privacy and consent",
       "Importance of responsible development",
-    ]}
-    className="w-[680px]"
-  />,
-  <About
-    key="conclusion"
-    title="Embracing the Future of AI"
-    subtitle={[
-      "Flux: significant advancement in AI imaging",
-      "Innovative finetuning enhances capabilities",
-      "Balancing innovation with responsibility",
-      "Encouraging ongoing dialogue",
     ]}
     className="w-[680px]"
   />,

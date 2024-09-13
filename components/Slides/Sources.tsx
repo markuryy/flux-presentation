@@ -8,8 +8,8 @@ import { motion, useAnimation } from "framer-motion"
 import classNames from "utils/classNames"
 
 interface SourcesProps {
-  sources: string[];
-  className?: string;
+  sources: string[]
+  className?: string
 }
 
 const Sources: React.FC<SourcesProps> = ({ sources, className }) => {
