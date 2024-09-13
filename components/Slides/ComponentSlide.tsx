@@ -37,7 +37,13 @@ const ComponentSlide: React.FC<Props> = ({
   }
 
   return (
-    <div ref={ref} className={classNames("flex flex-col md:flex-row items-center", className ?? "")}>
+    <div
+      ref={ref}
+      className={classNames(
+        "flex flex-col md:flex-row items-center",
+        className ?? ""
+      )}
+    >
       <div className="w-full pr-4">
         <motion.h1
           initial="hidden"
@@ -70,7 +76,7 @@ const ComponentSlide: React.FC<Props> = ({
         animate={controls}
         variants={variants}
         transition={{ delay: 0.2, duration: 0.4, type: "spring" }}
-        className="w-full md:w-1/2 flex justify-center items-center mt-4 md:mt-0"
+        className="mt-4 flex w-full items-center justify-center md:mt-0 md:w-1/2"
       >
         {component}
       </motion.div>

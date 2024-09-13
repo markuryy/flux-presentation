@@ -4,12 +4,12 @@ import { type Metadata } from "next"
 
 import Presentation from "components/Presentation"
 import About from "components/Slides/About"
+import ComponentSlide from "components/Slides/ComponentSlide"
 import Cover from "components/Slides/Cover"
 import End from "components/Slides/End"
 import ImageSlide from "components/Slides/ImageSlide"
 import QuoteBlock from "components/Slides/QuoteBlock"
 import Sources from "components/Slides/Sources"
-import ComponentSlide from "components/Slides/ComponentSlide"
 import VAEVisualization from "components/Slides/VAEVisualization"
 import generateMetadata from "utils/seo"
 
@@ -45,7 +45,7 @@ const slides: React.ReactNode[] = [
       "Improved natural language understanding",
       "Text rendering within images",
       "12 channel VAE (vs. 4 channel VAE like SDXL)",
-      "Multimodal transformer (MMDiT)"
+      "Multimodal transformer (MMDiT)",
     ]}
     className="w-[680px]"
   />,
