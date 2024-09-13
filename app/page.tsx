@@ -99,6 +99,17 @@ const slides: React.ReactNode[] = [
     ]}
     className="w-[680px]"
   />,
+  <About
+    key="data-mining"
+    title="Dataset Preparation"
+    subtitle={[
+      "Collecting text-image pairs (e.g., scraping Reddit)",
+      "Using domain-specific VLMs like finetuned PaliGemma for captioning",
+      "Balancing AI and human-generated captions",
+      "Preprocessing: filler text removal, aspect ratio randomization, square cropping, downsampling",
+    ]}
+    className="w-[680px]"
+  />,
   <Cover
     key="finetuning-journey"
     title="My Finetuning Journey"
