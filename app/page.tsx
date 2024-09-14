@@ -97,7 +97,7 @@ const Home: React.FC = () => {
       subtitle="From Challenges to Breakthroughs"
       className="w-[680px]"
     />,
-    <About
+    <ImageSlide
       key="initial-attempts"
       title="Initial Attempts with LoRA"
       subtitle={[
@@ -105,6 +105,8 @@ const Home: React.FC = () => {
         "Limited performance gains",
         "Risk of model degradation",
       ]}
+      image="/images/LoRA_Noise.png"
+      caption="The learning rate was too high, and the gradient exploded"
       className="w-[680px]"
     />,
     <About
