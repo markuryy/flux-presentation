@@ -48,16 +48,17 @@ const Presentation: React.FC<Props> = ({ slides, sourceLink }) => {
     const handleKeyboardEvent = (e: KeyboardEvent): void => {
       switch (e.key) {
         case "ArrowLeft":
-        //case "A":
-        //case "a":
+          // case "A":
+          // case "a":
           prevSlide()
           break
         case "ArrowRight":
-        //case "D":
-        //case "d":
+          // case "D":
+          // case "d":
           nextSlide()
           break
-        {/*case "F":
+          {
+            /* case "F":
         case "f":
           setIsFooterVisible(!isFooterVisible)
           break
@@ -68,7 +69,8 @@ const Presentation: React.FC<Props> = ({ slides, sourceLink }) => {
         case "P":
         case "p":
           setIsPageNumberVisible(!isPageNumberVisible)
-          break*/}
+          break */
+          }
       }
     }
     document.addEventListener("keyup", handleKeyboardEvent)

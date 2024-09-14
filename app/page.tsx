@@ -1,10 +1,10 @@
-"use client";
+"use client"
 import * as React from "react"
-import { useState } from 'react';
+import { useState } from "react"
 
 import Presentation from "components/Presentation"
 import About from "components/Slides/About"
-import ComponentSlide from "components/Slides/ComponentSlide" 
+import ComponentSlide from "components/Slides/ComponentSlide"
 import Cover from "components/Slides/Cover"
 import End from "components/Slides/End"
 import ImageSlide from "components/Slides/ImageSlide"
@@ -12,13 +12,13 @@ import MultiImageSlide from "components/Slides/MultiImageSlide"
 import QuoteBlock from "components/Slides/QuoteBlock"
 import Sources from "components/Slides/Sources"
 import VAEVisualization from "components/Slides/VAEVisualization"
-import YourTurnSlide from "components/Slides/YourTurnSlide";
-import YourImageSlide from "components/Slides/YourImageSlide";
+import YourImageSlide from "components/Slides/YourImageSlide"
+import YourTurnSlide from "components/Slides/YourTurnSlide"
 
 const Home: React.FC = () => {
-  const [imageUrl, setImageUrl] = useState('');
-  const [prompt, setPrompt] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState("")
+  const [prompt, setPrompt] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const slides: React.ReactNode[] = [
     <Cover
@@ -231,7 +231,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <Presentation slides={slides} sourceLink="markuryy/flux-presentation" />  
+      <Presentation slides={slides} sourceLink="markuryy/flux-presentation" />
     </div>
   )
 }

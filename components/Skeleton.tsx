@@ -1,15 +1,11 @@
-import React from 'react';
+import React from "react"
 
 interface SkeletonProps {
-  className?: string;
+  className?: string
 }
 
 const Skeleton: React.FC<SkeletonProps> = ({ className }) => {
-  return (
-    <div 
-      className={`bg-gray-200 rounded-md animate-pulse ${className}`}
-    />
-  );
-};
+  return <div className={`animate-pulse rounded-md bg-gray-200 ${className}`} />
+}
 
-export default Skeleton;
+export default Skeleton

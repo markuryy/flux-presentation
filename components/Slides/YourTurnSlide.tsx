@@ -1,85 +1,98 @@
-import React from 'react';
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import classNames from "utils/classNames";
-import { Textarea } from "components/ui/textarea";
+import React from "react"
+import { useInView } from "react-intersection-observer"
+
+import { motion, useAnimation } from "framer-motion"
+
+import { Textarea } from "components/ui/textarea"
+import classNames from "utils/classNames"
 
 interface YourTurnSlideProps {
-  setImageUrl: (url: string) => void;
-  prompt: string;
-  setPrompt: (prompt: string) => void;
-  loading: boolean;
-  setLoading: (loading: boolean) => void;
+  setImageUrl: (url: string) => void
+  prompt: string
+  setPrompt: (prompt: string) => void
+  loading: boolean
+  setLoading: (loading: boolean) => void
 }
 
-const YourTurnSlide: React.FC<YourTurnSlideProps> = ({ setImageUrl, prompt, setPrompt, loading, setLoading }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView();
+const YourTurnSlide: React.FC<YourTurnSlideProps> = ({
+  setImageUrl,
+  prompt,
+  setPrompt,
+  loading,
+  setLoading,
+}) => {
+  const controls = useAnimation()
+  const [ref, inView] = useInView()
 
   React.useEffect(() => {
     if (inView) {
       controls.start("visible").catch((err) => {
-        console.log(err);
-      });
+        console.log(err)
+      })
     }
-  }, [controls, inView]);
+  }, [controls, inView])
 
   const variants = {
     hidden: { translateY: 10, opacity: 0 },
     visible: { translateY: 0, opacity: 1 },
-  };
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
+    e.preventDefault()
+    setLoading(true)
 
-    const response = await fetch('/api/generate-image', {
-      method: 'POST',
+    const response = await fetch("/api/generate-image", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ prompt }),
-    });
+    })
 
-    setLoading(false);
+    setLoading(false)
 
     if (response.ok) {
-      const data = await response.json();
+      const data = await response.json()
       if (data.result) {
-        setImageUrl(data.result.images[0].url);
+        setImageUrl(data.result.images[0].url)
       }
     }
 
-    setPrompt('');
-  };
+    setPrompt("")
+  }
 
   return (
-    <div ref={ref} className="flex flex-col items-start justify-center w-[680px]">
-      <motion.h1 
+    <div
+      ref={ref}
+      className="flex w-[680px] flex-col items-start justify-center"
+    >
+      <motion.h1
         initial="hidden"
         animate={controls}
         variants={variants}
         transition={{ delay: 0, duration: 0.4, type: "spring" }}
-        className="text-4xl font-bold mb-6 text-left"
+        className="mb-6 text-left text-4xl font-bold"
       >
         Your Turn
       </motion.h1>
-      <motion.form 
+      <motion.form
         onSubmit={handleSubmit}
-        initial="hidden" 
+        initial="hidden"
         animate={controls}
         variants={variants}
         transition={{ delay: 0.1, duration: 0.4, type: "spring" }}
-        className="flex flex-col items-center w-full"
+        className="flex w-full flex-col items-center"
       >
         <Textarea
           value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          className="border border-gray-300 rounded-md p-2 mb-4 w-full"
+          onChange={(e) => {
+            setPrompt(e.target.value)
+          }}
+          className="mb-4 w-full rounded-md border border-gray-300 p-2"
           placeholder="Enter a prompt"
           disabled={loading}
         />
-        <button 
+        <button
           type="submit"
           className={classNames(
             "bg-blue-500 text-white px-4 py-2 rounded-md flex items-center",
@@ -89,17 +102,35 @@ const YourTurnSlide: React.FC<YourTurnSlideProps> = ({ setImageUrl, prompt, setP
         >
           {loading ? (
             <>
-              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              <svg
+                className="-ml-1 mr-3 size-5 animate-spin text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
               </svg>
               Generating...
             </>
-          ) : 'Submit'}
+          ) : (
+            "Submit"
+          )}
         </button>
       </motion.form>
     </div>
-  );
-};
+  )
+}
 
-export default YourTurnSlide;
+export default YourTurnSlide

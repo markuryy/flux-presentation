@@ -16,7 +16,6 @@ export const metadata: Metadata = generateMetadata({
   description: "Exploring Flux: Advanced Text-to-Image AI Model",
 })
 
-
 export const viewport: Viewport = {
   themeColor: "#000000",
 }
