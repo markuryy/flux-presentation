@@ -1,12 +1,21 @@
 import * as React from "react"
 
-import type { Viewport } from "next"
+import type { Metadata, Viewport } from "next"
 
 import localFont from "next/font/local"
 
 import classNames from "utils/classNames"
 
 import "../styles/main.css"
+
+import generateMetadata from "utils/seo"
+
+export const metadata: Metadata = generateMetadata({
+  path: "/",
+  title: "Flux Presentation",
+  description: "Exploring Flux: Advanced Text-to-Image AI Model",
+})
+
 
 export const viewport: Viewport = {
   themeColor: "#000000",
