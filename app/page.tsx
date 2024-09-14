@@ -8,6 +8,7 @@ import ComponentSlide from "components/Slides/ComponentSlide"
 import Cover from "components/Slides/Cover"
 import End from "components/Slides/End"
 import ImageSlide from "components/Slides/ImageSlide"
+import MultiImageSlide from "components/Slides/MultiImageSlide"
 import QuoteBlock from "components/Slides/QuoteBlock"
 import Sources from "components/Slides/Sources"
 import VAEVisualization from "components/Slides/VAEVisualization"
@@ -152,12 +153,21 @@ const slides: React.ReactNode[] = [
     title="Cat Images"
     subtitle={[
       "Photorealistic renderings",
-      "Despite the quality, the model is visibly overfit",
       "Struggles to infer interactions not present in training data",
-      "Inconsistent data leads to inconsistent results",
+      "Highly accurate likeness",
     ]}
     image="/images/Albert_TED.png"
     caption='Prompt: a photo of Albert the cat wearing a headset with a microphone on stage giving a TED talk. He is captured mid-speech. The TEDx logo is visible in the background with the text "Catnip Optimization Algorithms in the Digital Age" on the presentation.'
+    className="w-[680px]"
+  />,
+  <MultiImageSlide
+    key="multi-cat-images"
+    title="More Cat Images"
+    images={["/images/Albert_Bubbles.png", "/images/Albert_Smoke.png"]}
+    captions={[
+      "Prompt: Albert, the white and grey cat with green eyes, walking on floating translucent platforms inside a surreal bubble-filled world. The bubbles around him shimmer with iridescent hues of purple, blue, and green, casting soft rainbow reflections on his fur. The background is dreamy and abstract, with ethereal, glowing clouds and refracted light dancing across the scene.",
+      "Prompt: a low quality fisheye photo of Albert the cat smoking a cigarette, smoke cloud, vacant expression behind eyes, no thoughts in that little brain, low light, phone camera flash, fisheye lens",
+    ]}
     className="w-[680px]"
   />,
   <Cover
