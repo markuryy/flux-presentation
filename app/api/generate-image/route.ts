@@ -4,20 +4,20 @@ import { NextResponse } from "next/server"
 const RATE_LIMIT_PER_DAY = 3
 const requestCounts = new Map()
 
-function resetRequestCounts() {
+function resetRequestCounts(): void {
   requestCounts.clear()
 }
 
 // Reset counts every 24 hours
 setInterval(resetRequestCounts, 24 * 60 * 60 * 1000)
 
-export async function POST(request: Request) {
-  const ip =
-    request.headers.get("x-forwarded-for") ||
-    request.headers.get("x-real-ip") ||
-    "127.0.0.1"
+export async function POST(request: Request): Promise<NextResponse> {
+  const xForwardedFor = request.headers.get("x-forwarded-for")
+  const xRealIP = request.headers.get("x-real-ip")
 
-  const count = requestCounts.get(ip) || 0
+  const ip = xForwardedFor ?? xRealIP ?? "127.0.0.1"
+
+  const count = requestCounts.get(ip) ?? 0
 
   if (count >= RATE_LIMIT_PER_DAY) {
     console.log(`Rate limit exceeded for IP: ${ip}`)

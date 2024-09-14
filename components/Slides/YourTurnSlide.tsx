@@ -6,6 +6,13 @@ import { motion, useAnimation } from "framer-motion"
 import { Textarea } from "components/ui/textarea"
 import classNames from "utils/classNames"
 
+// Define the shape of the API response
+interface GenerateImageResponse {
+  result: {
+    images: Array<{ url: string }>
+  }
+}
+
 interface YourTurnSlideProps {
   setImageUrl: (url: string) => void
   prompt: string
@@ -24,11 +31,16 @@ const YourTurnSlide: React.FC<YourTurnSlideProps> = ({
   const controls = useAnimation()
   const [ref, inView] = useInView()
 
-  React.useEffect(() => {
+  React.useEffect((): void => {
     if (inView) {
-      controls.start("visible").catch((err) => {
-        console.log(err)
-      })
+      const animate = async (): Promise<void> => {
+        try {
+          await controls.start("visible")
+        } catch (err) {
+          console.error(err)
+        }
+      }
+      void animate() // Use void to indicate the promise is intentionally not awaited
     }
   }, [controls, inView])
 
@@ -37,28 +49,47 @@ const YourTurnSlide: React.FC<YourTurnSlideProps> = ({
     visible: { translateY: 0, opacity: 1 },
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault()
     setLoading(true)
 
-    const response = await fetch("/api/generate-image", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ prompt }),
-    })
+    try {
+      const response = await fetch("/api/generate-image", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt }),
+      })
 
-    setLoading(false)
+      if (response.ok) {
+        const data: GenerateImageResponse = await response.json()
 
-    if (response.ok) {
-      const data = await response.json()
-      if (data.result) {
-        setImageUrl(data.result.images[0].url)
+        // Use optional chaining to safely access nested properties
+        const firstImageUrl = data.result?.images?.[0]?.url
+
+        // Explicitly check that firstImageUrl is a non-empty string
+        if (typeof firstImageUrl === "string" && firstImageUrl.trim() !== "") {
+          setImageUrl(firstImageUrl)
+        } else {
+          console.error("No images found in the response or URL is empty.")
+        }
+      } else {
+        console.error("Response not ok:", response.statusText)
       }
+    } catch (error) {
+      console.error("Error fetching image:", error)
+    } finally {
+      setLoading(false)
+      setPrompt("")
     }
+  }
 
-    setPrompt("")
+  // Wrap the handleSubmit in a non-async function to prevent passing a promise to onSubmit
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    void handleSubmit(e)
   }
 
   return (
@@ -76,12 +107,12 @@ const YourTurnSlide: React.FC<YourTurnSlideProps> = ({
         Your Turn
       </motion.h1>
       <motion.form
-        onSubmit={handleSubmit}
         initial="hidden"
         animate={controls}
         variants={variants}
         transition={{ delay: 0.1, duration: 0.4, type: "spring" }}
         className="flex w-full flex-col items-center"
+        onSubmit={onFormSubmit} // Use the wrapped handler
       >
         <Textarea
           value={prompt}

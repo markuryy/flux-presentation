@@ -5,9 +5,7 @@ import type { Metadata, Viewport } from "next"
 import localFont from "next/font/local"
 
 import classNames from "utils/classNames"
-
 import "../styles/main.css"
-
 import generateMetadata from "utils/seo"
 
 export const metadata: Metadata = generateMetadata({

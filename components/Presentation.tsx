@@ -16,14 +16,6 @@ interface Props {
 const Presentation: React.FC<Props> = ({ slides, sourceLink }) => {
   const [currentSlide, setCurrentSlide] = React.useState(0)
 
-  const [isFooterVisible, setIsFooterVisible] = React.useState(true)
-  const [isControlVisible, setIsControlVisible] = React.useState(
-    config.isControlVisible
-  )
-  const [isPageNumberVisible, setIsPageNumberVisible] = React.useState(
-    config.isPageNumberVisible
-  )
-
   const prevSlide = React.useCallback(() => {
     setCurrentSlide((slide) => {
       if (slide === 0) {
@@ -57,33 +49,13 @@ const Presentation: React.FC<Props> = ({ slides, sourceLink }) => {
           // case "d":
           nextSlide()
           break
-          {
-            /* case "F":
-        case "f":
-          setIsFooterVisible(!isFooterVisible)
-          break
-        case "C":
-        case "c":
-          setIsControlVisible(!isControlVisible)
-          break
-        case "P":
-        case "p":
-          setIsPageNumberVisible(!isPageNumberVisible)
-          break */
-          }
       }
     }
     document.addEventListener("keyup", handleKeyboardEvent)
     return () => {
       document.removeEventListener("keyup", handleKeyboardEvent)
     }
-  }, [
-    prevSlide,
-    nextSlide,
-    isFooterVisible,
-    isControlVisible,
-    isPageNumberVisible,
-  ])
+  }, [prevSlide, nextSlide])
 
   const renderCurrentSlide = (): React.ReactNode => {
     if (!isNaN(currentSlide) && slides.length > 0) {
@@ -96,7 +68,7 @@ const Presentation: React.FC<Props> = ({ slides, sourceLink }) => {
   return (
     <section className="relative grid h-screen place-content-center">
       <div>{renderCurrentSlide()}</div>
-      {isFooterVisible && (
+      {config.isControlVisible && (
         <div className="absolute bottom-4 right-0 flex w-full items-end px-4">
           {sourceLink !== undefined && (
             <a
@@ -109,12 +81,12 @@ const Presentation: React.FC<Props> = ({ slides, sourceLink }) => {
             </a>
           )}
           <div className="ml-auto flex items-center gap-2">
-            {isPageNumberVisible && (
+            {config.isPageNumberVisible && (
               <p className="mr-4 text-sm text-gray-600">
                 {currentSlide + 1}/{slides.length}
               </p>
             )}
-            {isControlVisible && (
+            {config.isControlVisible && (
               <>
                 <button
                   className="rounded-full bg-gray-300 p-3 text-gray-800 outline-none hover:bg-gray-400 focus:bg-gray-400 active:scale-95"

@@ -216,7 +216,7 @@ const Home: React.FC = () => {
       ]}
       className="w-[680px]"
     />,
-    ...(imageUrl
+    ...(imageUrl !== ""
       ? [
           <YourImageSlide
             key="your-image"

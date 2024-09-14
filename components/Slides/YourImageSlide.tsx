@@ -50,14 +50,14 @@ const YourImageSlide: React.FC<YourImageSlideProps> = ({
       {loading ? (
         <div className="flex items-center justify-center space-x-2">
           <div
-            className="spinner-border inline-block size-8 rounded-full border-4 text-blue-600"
+            className="inline-block size-8 animate-spin rounded-full border-4 border-blue-600"
             role="status"
           >
-            <span className="visually-hidden">Loading...</span>
+            <span className="sr-only">Loading...</span>
           </div>
           <span>Generating image...</span>
         </div>
-      ) : imageUrl ? (
+      ) : imageUrl !== "" ? (
         <motion.img
           src={imageUrl}
           alt="Generated image"
