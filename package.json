@@ -9,8 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "type-check": "tsc --pretty --noEmit",
-    "prepare": "husky install"
+    "type-check": "tsc --pretty --noEmit"
   },
   "dependencies": {
     "@fal-ai/serverless-client": "^0.14.2",
@@ -45,21 +44,16 @@
     "eslint-config-standard-with-typescript": "^43.0.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.9.0",
-    "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-n": "^17.10.2", 
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-promise": "^6.6.0",
     "eslint-plugin-tailwindcss": "^3.17.4",
-    "husky": "^9.1.4",
-    "lint-staged": "^15.2.9",
     "postcss": "^8.4.41",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint"
   },
   "volta": {
     "node": "20.14.0"
