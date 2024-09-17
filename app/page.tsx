@@ -14,6 +14,7 @@ import Sources from "components/Slides/Sources"
 import VAEVisualization from "components/Slides/VAEVisualization"
 import YourImageSlide from "components/Slides/YourImageSlide"
 import YourTurnSlide from "components/Slides/YourTurnSlide"
+import StackedImages from "components/StackedImages"
 
 const Home: React.FC = () => {
   const [imageUrl, setImageUrl] = useState("")
@@ -97,7 +98,7 @@ const Home: React.FC = () => {
       subtitle="From Challenges to Breakthroughs"
       className="w-[680px]"
     />,
-    <ImageSlide
+    <ComponentSlide
       key="initial-attempts"
       title="Initial Attempts with LoRA"
       subtitle={[
@@ -105,8 +106,13 @@ const Home: React.FC = () => {
         "Limited performance gains",
         "Risk of model degradation",
       ]}
-      image="/images/LoRA_Noise.png"
-      caption="The learning rate was too high, and the gradient exploded"
+      component={
+        <StackedImages
+          topImageSrc="/images/Training_Loss.png"
+          bottomImageSrc="/images/LoRA_Noise.png"
+          caption="The learning rate was too high, and the gradient exploded"
+        />
+      }
       className="w-[680px]"
     />,
     <About
